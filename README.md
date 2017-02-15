@@ -30,24 +30,3 @@ The config.yml file needs to be located at `/data/transmission-rss/config.yml`
     update_interval: 600
 
     add_paused: false
-
-    server:
-      host: localhost
-      port: 9091
-      rpc_path: /transmission/rpc
-
-    login:
-      username: transmission
-      password: transmission
-
-    log_target: /var/log/transmissiond-rss.log
-
-    privileges:
-      user: nobody
-      group: nobody
-
-    fork: false
-
-    pid_file: false
-
-    seen_file: ~/.config/transmission/seen
