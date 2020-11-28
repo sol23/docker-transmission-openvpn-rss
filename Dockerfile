@@ -1,14 +1,12 @@
-FROM haugene/transmission-openvpn
+FROM haugene/transmission-openvpn:3.2
 
-MAINTAINER Carsten Stender
-
-RUN apt-get update \
-	&& apt-get install -y make ruby ruby-dev supervisor\
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apk add --update make ruby ruby-dev build-base supervisor
 
 RUN gem install transmission-rss
 
-ENV "XDG_CONFIG_HOME=/data/"
+RUN apk del build-base
+
+ENV XDG_CONFIG_HOME=/data/
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY transmission-rss.conf /etc/transmission-rss.conf
